@@ -18,10 +18,13 @@ h1 {
   border-radius: 20px;
   box-shadow: 5px 5px 20px #cacaca, 
         -5px -5px 20px #ffffff;
-  padding: 40px;
+  padding: 20px;
   width: 400px;
   max-width: 100%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .display {
