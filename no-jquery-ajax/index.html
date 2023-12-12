@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>No jQuery Ajax Example</title>
+</head>
+
+<body>
+    <main>
+        <input type="text" id="input1" placeholder="Enter value 1">
+        <input type="text" id="input2" placeholder="Enter value 2">
+        <input onclick="submitData()" type="button" value="Submit">
+        <div id="response"></div>
+    </main>
+
+    <script>
+        function submitData() {
+            let input1 = document.getElementById('input1').value;
+            let input2 = document.getElementById('input2').value;
+
+            if (input1 === '' || input2 === '') {
+                alert('Input fields cannot be empty.');
+                return;
+            }
+
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', 'script.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('response').innerHTML = xhr.responseText;
+                }
+            };
+            xhr.send('input1=' + encodeURIComponent(input1) + '&input2=' + encodeURIComponent(input2));
+        }
+    </script>
+</body>
+
+</html>
